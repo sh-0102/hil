@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rilakkuma web</title>
+<style>
+body {
+    background-color: #fffaf3; /* 米黃色背景 */
+    color: #6B4226; /* 咖啡色文字 */
+    font-family: "微軟正黑體", sans-serif;
+}
+
+/* 標題 */
+h1 {
+    color: #805333;
+}
+
+/* 按鈕 */
+button {
+    background-color: #A67C52;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+}
+
+/* 卡片 */
+.card {
+    background-color: #FFF9F0;
+    border: 2px solid #D6B995;
+    border-radius: 15px;
+    padding: 20px;
+}
+</style>
+   
+   <style>
+        body {
+            margin: 0;
+            font-family: "Microsoft JhengHei", sans-serif;
+        }
+
+        /* ========= 最上方區塊 ========= */
+        header {
+            background: #9c694c;
+            color: #fff;
+            padding: 15px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        /* ========= 漢堡按鈕（手機） ========= */
+        .menu-btn {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px 15px;
+            background: #9c694c;
+            color: #fff;
+        }
+
+        /* ========= 主選單區 ========= */
+        nav {
+            background: #9c9c9c;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav > ul > li {
+            display: inline-block;
+        }
+
+        nav a {
+            display: block;
+            padding: 12px 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background: #ffe1c0;
+        }
+
+        /* ========= 第二層、第三層選單 ========= */
+        nav ul ul {
+            display: none;
+            position: absolute;
+            background: #9c694c;
+            min-width: 150px;
+            z-index: 999;
+        }
+
+        nav ul ul li {
+            display: block;
+        }
+
+        /* 滑鼠移到 li 才展開選單 */
+        nav ul li:hover > ul {
+            display: block;
+        }
+
+        /* 第三層偏移 */
+        nav ul ul ul {
+            top: 0;
+            left: 150px;
+            background: #ddac90;
+        }
+
+        /* ========= RWD：手機版 ========= */
+        @media (max-width: 768px) {
+
+            nav > ul > li {
+                display: block;
+                border-bottom: 1px solid #9c694c;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            nav ul.active {
+                display: block;
+            }
+
+            /* 手機版：次選單不再用 hover，改為點擊展開 */
+            nav ul ul, nav ul ul ul {
+                position: relative;
+            }
+
+            nav ul li:hover > ul {
+                display: none; /* 禁用 hover */
+            }
+
+            .open > ul {
+                display: block !important;
+            }
+
+            /* 點擊箭頭用 */
+            .arrow {
+                float: right;
+                font-size: 18px;
+            }
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>Rilakkuma webside</header>
+
+<!-- 漢堡按鈕 -->
+<div class="menu-btn" onclick="toggleMenu()">☰ 選單</div>
+
+
+</nav>
+<nav>
+    <ul id="menu">
+
+        <!-- 拉拉熊主選單 -->
+        <li>
+            <a href="#">拉拉熊 ▼</a>
+
+            <ul>
+                <li><a href="https://share.google/6bR6J1q4wNKsRvEO3">角色介紹</a></li>
+                <li><a href="https://share.google/rDRQhr1BnjL7beqx4">設計故事</a></li>
+                <li><a href="https://share.google/DjVrhHPMYaS7gEVPW">圖庫</a></li>
+            </ul>
+        </li>
+
+        <!-- 小白熊主選單 -->
+        <li>
+            <a href="#">小白熊 ▼</a>
+
+            <ul>
+                <li><a href="https://share.google/6bR6J1q4wNKsRvEO3">角色介紹</a></li>
+                <li><a href="你的網站網址5">設計故事</a></li>
+                <li><a href="https://share.google/dxKE7sSSpDALlWUL6">圖庫</a></li>
+            </ul>
+        </li>
+
+    </ul>
+</nav>
+
+<!-- 圖片區 -->
+<img src="https://www.san-x.co.jp/uploads/1769160899666-m44wqu0g12/001_rk.webp" class="center">
+
+<style>
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style> </iframe>
+
+<script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+}
+
+/* 手機版：讓次選單可以用點擊展開 */
+document.querySelectorAll("#menu > li > a").forEach(function (item) {
+    item.addEventListener("click", function (e) {
+        if (window.innerWidth <= 768) {
+            let parent = this.parentElement;
+            parent.classList.toggle("open");
+            e.preventDefault();
+        }
+    });
+});
+</script>
+
+</body>
+</html>
